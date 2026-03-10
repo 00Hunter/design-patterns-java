@@ -93,3 +93,5 @@ Each class handles only its own logic.
 3.Single Responsibility Principle
 4.Dependency Inversion Principle
 5.Runtime Polymorphism
+
+Basically payment method will be given at run time meaning its a strategy pattern
