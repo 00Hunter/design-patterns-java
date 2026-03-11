@@ -28,18 +28,24 @@ public class GamerRunner {
         System.out.println("Player "+players[current_player].getName()+"Starts the game");
 
         while(true){
-            int x=(int)(Math.random()*(board_size_row-1-0)+1);
-            int y =(int)(Math.random()*(board_size_row-1-0)+1);
-            System.out.println("Player" +players[current_player].getName()+" placed at" +x+" "+y+" "+players[current_player].getPeices().getPeice());
+            int x=(int)(Math.random()*(board_size_row));
+            int y =(int)(Math.random()*(board_size_row));
 
-           if(board.validateMove(x,y)){
-               board.updateBoard(x,y,players[current_player].getPeices());
-           }
+            if(board.validateMove(x,y)==false){
+                continue;
+            }
 
+            System.out.println("Player" +players[current_player].getName()+" placed at " +x+" "+y+" "+players[current_player].getPeices().getPeice());
+
+
+
+            board.updateBoard(x,y,players[current_player].getPeices());
+            board.printBoard();
             if(board.isWinner(x,y,players[current_player].getPeices())){
                 System.out.println("We have winner"+players[current_player].getName());
                 break;
             }
+
             SwitchTurns();
             System.out.println("Player" +players[current_player].getName()+"is playing");
         }
@@ -47,11 +53,10 @@ public class GamerRunner {
         board.printBoard();
     }
 
-
-
     void SwitchTurns(){
         current_player++;
-        if(current_player==players.length){
+
+        if(current_player>=players.length){
             current_player=0;
         }
     }
