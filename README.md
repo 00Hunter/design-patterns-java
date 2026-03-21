@@ -9,4 +9,4 @@ Patterns done
 
 Questions done 
 1.Parking Spot
-2.Tic tac toe game 
+2.Tic tac toe game .
