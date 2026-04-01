@@ -1,3 +1,8 @@
+import ChainOfResponsiblityPattern.LeaveRequestEg.ConcreteApprover.DirectorApprover;
+import ChainOfResponsiblityPattern.LeaveRequestEg.ConcreteApprover.ManagerApprover;
+import ChainOfResponsiblityPattern.LeaveRequestEg.ConcreteApprover.TeamLeadApprover;
+import ChainOfResponsiblityPattern.LeaveRequestEg.LeaveApprover;
+import ChainOfResponsiblityPattern.LeaveRequestEg.LeaveRequest;
 import FactoryPattern.Shape;
 import FactoryPattern.ShapeFactory;
 import ObserverPattern.WeatherApp.WithObserverPattern.Observable.Observable;
@@ -30,7 +35,26 @@ public class Main {
 //        WeatherStation.addObserver(ob1);
 //        WeatherStation.addObserver(ob2);
 //        WeatherStation.setData(10);
-        GamerRunner gm=new GamerRunner(3);
-        gm.StartGame();
+//        GamerRunner gm=new GamerRunner(3);
+//        gm.StartGame();
+
+
+        // Leave Approver
+        LeaveRequest request1=new LeaveRequest(2,"Prajawal");
+        LeaveRequest request2=new LeaveRequest(5,"Honey");
+        LeaveRequest request3=new LeaveRequest(10,"john");
+        LeaveRequest request4=new LeaveRequest(25,"Ron");
+
+        LeaveApprover teamLead=new TeamLeadApprover();
+        LeaveApprover manager=new ManagerApprover();
+        LeaveApprover director=new DirectorApprover();
+
+        teamLead.setNextLeaveApprover(manager);
+        manager.setNextLeaveApprover(director);
+
+        teamLead.Approve(request1);
+        teamLead.Approve(request2);
+        teamLead.Approve(request3);
+        teamLead.Approve(request4);
     }
 }
