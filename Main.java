@@ -10,13 +10,21 @@ import ObserverPattern.WeatherApp.WithObserverPattern.Observable.WeatherStation;
 import ObserverPattern.WeatherApp.WithObserverPattern.Observer.DisplayBoard;
 import ObserverPattern.WeatherApp.WithObserverPattern.Observer.MobileApp;
 import ObserverPattern.WeatherApp.WithObserverPattern.Observer.Observer;
+import Questions.ParkingLot.V1.Enums.VehicleType;
+import Questions.ParkingLot.V1.Objects.EntryGate;
+import Questions.ParkingLot.V1.Objects.Exit;
+import Questions.ParkingLot.V1.Objects.Ticket;
+import Questions.ParkingLot.V1.Objects.Vehicle;
+import Questions.ParkingLot.V1.ParkingSpotManager;
+import Questions.ParkingLot.V1.PaymentProcessor.CardStrategy;
+import Questions.ParkingLot.V1.PaymentProcessor.PaymentStrategy;
 import Questions.TicTacToe.Service.GamerRunner;
 import StrategyPattern.Eg2.WithPattern.PaymentService;
-import StrategyPattern.Eg2.WithPattern.Strategy.PaymentStrategy;
+import StrategyPattern.Eg2.WithPattern.Strategy.CashStrategy;
 import StrategyPattern.Eg2.WithPattern.Strategy.UPIStrategy;
 import StrategyPattern.WithStrategyPattern.OffRoadVehicle;
 import StrategyPattern.WithStrategyPattern.PassengerVehicle;
-import StrategyPattern.WithStrategyPattern.Vehicle;
+
 
 import java.awt.*;
 
@@ -40,21 +48,45 @@ public class Main {
 
 
         // Leave Approver
-        LeaveRequest request1=new LeaveRequest(2,"Prajawal");
-        LeaveRequest request2=new LeaveRequest(5,"Honey");
-        LeaveRequest request3=new LeaveRequest(10,"john");
-        LeaveRequest request4=new LeaveRequest(25,"Ron");
+//        LeaveRequest request1=new LeaveRequest(2,"Prajawal");
+//        LeaveRequest request2=new LeaveRequest(5,"Honey");
+//        LeaveRequest request3=new LeaveRequest(10,"john");
+//        LeaveRequest request4=new LeaveRequest(25,"Ron");
+//
+//        LeaveApprover teamLead=new TeamLeadApprover();
+//        LeaveApprover manager=new ManagerApprover();
+//        LeaveApprover director=new DirectorApprover();
+//
+//        teamLead.setNextLeaveApprover(manager);
+//        manager.setNextLeaveApprover(director);
+//
+//        teamLead.Approve(request1);
+//        teamLead.Approve(request2);
+//        teamLead.Approve(request3);
+//        teamLead.Approve(request4);
 
-        LeaveApprover teamLead=new TeamLeadApprover();
-        LeaveApprover manager=new ManagerApprover();
-        LeaveApprover director=new DirectorApprover();
+        //Parking spot
 
-        teamLead.setNextLeaveApprover(manager);
-        manager.setNextLeaveApprover(director);
+        Vehicle car1 = new Vehicle("KA01AB1234", "2014","Honda",VehicleType.FOUR_WHEELER);
+        ParkingSpotManager parkingSpotManager=new ParkingSpotManager();
+        EntryGate entryGate=new EntryGate(parkingSpotManager);
+        Exit exit=new Exit(parkingSpotManager);
+        Ticket ticket = entryGate.parkVehicle(car1);
 
-        teamLead.Approve(request1);
-        teamLead.Approve(request2);
-        teamLead.Approve(request3);
-        teamLead.Approve(request4);
+        if (ticket == null) {
+            System.out.println("Parking failed");
+            return;
+        }
+
+        System.out.println("Vehicle parked");
+        System.out.println("Ticket id: " + ticket.getId());
+        System.out.println("Vehicle number: " + ticket.getVehicle().getNumber());
+        System.out.println("Spot id: " + ticket.getParkingSpot());
+
+
+        PaymentStrategy paymentStrategy = new CardStrategy();
+        exit.RemoveVehicle(ticket, paymentStrategy);
+
+        System.out.println("Vehicle exited successfully");
     }
 }

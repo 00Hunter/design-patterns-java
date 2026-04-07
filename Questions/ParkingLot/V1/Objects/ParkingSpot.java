@@ -21,4 +21,8 @@ abstract public class ParkingSpot {
         return this.occupied;
     }
 
+    public Vehicle getVehicle(){
+        return this.vehicle;
+    }
+
 }

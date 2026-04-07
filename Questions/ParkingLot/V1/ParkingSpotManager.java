@@ -7,6 +7,7 @@ import Questions.ParkingLot.V1.ParkingSpots.FourWheelerSpot;
 import Questions.ParkingLot.V1.ParkingSpots.TwoWheelerSpot;
 
 import java.util.ArrayList;
+import java.util.Formattable;
 import java.util.List;
 
  public class ParkingSpotManager {
@@ -18,6 +19,7 @@ import java.util.List;
         this.TwoWheelerlist=new ArrayList<>();
         this.FourWheelerlist=new ArrayList<>();
         CreateList();
+
 
     }
 
@@ -31,23 +33,38 @@ import java.util.List;
         }
      }
 
-     public void ParkVehicle(Vehicle v){
+     public ParkingSpot ParkVehicle(Vehicle v){
         if(v.getType()==VehicleType.FOUR_WHEELER){
             for(int i=0;i<600;i++){
                 if(FourWheelerlist.get(i).getStatus()==false){
                     FourWheelerlist.get(i).ParkVehicle(v);
+                    return FourWheelerlist.get(i);
                 }
             }
         }else{
             for(int i=0;i<400;i++){
                 if(TwoWheelerlist.get(i).getStatus()==false){
                     TwoWheelerlist.get(i).ParkVehicle(v);
+                    return TwoWheelerlist.get(i);
                 }
             }
         }
+        return null;
     }
     public void RemoveVehicle(Vehicle v){
-//        if()
+        if(v.getType()==VehicleType.TWO_WHEELER){
+                for(int i=0;i<400;i++){
+                    if(TwoWheelerlist.get(i).getVehicle().getNumber()==v.getNumber()){
+                        TwoWheelerlist.get(i).RemoveVehilce();
+                    }
+                }
+        }else {
+            for(int i=0;i<600;i++){
+                if(FourWheelerlist.get(i).getVehicle()==v){
+                    FourWheelerlist.get(i).RemoveVehilce();
+                }
+            }
+        }
     }
 
     public void AddParkingSpace(ParkingSpot parkingSpot){
