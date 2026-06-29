@@ -10,14 +10,13 @@ import ObserverPattern.WeatherApp.WithObserverPattern.Observable.WeatherStation;
 import ObserverPattern.WeatherApp.WithObserverPattern.Observer.DisplayBoard;
 import ObserverPattern.WeatherApp.WithObserverPattern.Observer.MobileApp;
 import ObserverPattern.WeatherApp.WithObserverPattern.Observer.Observer;
-import Questions.ParkingLot.V1.Enums.VehicleType;
-import Questions.ParkingLot.V1.Objects.EntryGate;
-import Questions.ParkingLot.V1.Objects.Exit;
-import Questions.ParkingLot.V1.Objects.Ticket;
-import Questions.ParkingLot.V1.Objects.Vehicle;
-import Questions.ParkingLot.V1.ParkingSpotManager;
-import Questions.ParkingLot.V1.PaymentProcessor.CardStrategy;
-import Questions.ParkingLot.V1.PaymentProcessor.PaymentStrategy;
+import Questions.ParkingLot.V1.enums.VehicleType;
+import Questions.ParkingLot.V1.objects.EntryGate;
+import Questions.ParkingLot.V1.objects.ExitGate;
+import Questions.ParkingLot.V1.objects.Ticket;
+import Questions.ParkingLot.V1.objects.Vehicles;
+import Questions.ParkingLot.V1.objects.ParkingSpotManager;
+import Questions.ParkingLot.V1.objects.Vehicles;
 import Questions.TicTacToe.Service.GamerRunner;
 import StrategyPattern.Eg2.WithPattern.PaymentService;
 import StrategyPattern.Eg2.WithPattern.Strategy.CashStrategy;
@@ -67,26 +66,28 @@ public class Main {
 
         //Parking spot
 
-        Vehicle car1 = new Vehicle("KA01AB1234", "2014","Honda",VehicleType.FOUR_WHEELER);
+        Vehicles car1 = new Vehicles("KA01AB1234",VehicleType.FOUR_WHEELER);
         ParkingSpotManager parkingSpotManager=new ParkingSpotManager();
         EntryGate entryGate=new EntryGate(parkingSpotManager);
-        Exit exit=new Exit(parkingSpotManager);
-        Ticket ticket = entryGate.parkVehicle(car1);
+        Ticket ticket=entryGate.GenerateTicket(car1.getVehicleNumber(),VehicleType.FOUR_WHEELER);
+
+        ExitGate exit=new ExitGate(ticket,parkingSpotManager);
+;
 
         if (ticket == null) {
             System.out.println("Parking failed");
             return;
         }
 
+
         System.out.println("Vehicle parked");
-        System.out.println("Ticket id: " + ticket.getId());
-        System.out.println("Vehicle number: " + ticket.getVehicle().getNumber());
-        System.out.println("Spot id: " + ticket.getParkingSpot());
-
-
-        PaymentStrategy paymentStrategy = new CardStrategy();
-        exit.RemoveVehicle(ticket, paymentStrategy);
-
+        System.out.println("Ticket id: " + ticket.getVehicleNumber());
+        System.out.println("Vehicle number: " + ticket.getVehicleNumber());
+        System.out.println("Spot id: " + ticket.getSpot());
         System.out.println("Vehicle exited successfully");
+
+        exit.RemoveVehicle();
+        exit.MakePayment();
+        exit.GenerateReceipt();
     }
 }
