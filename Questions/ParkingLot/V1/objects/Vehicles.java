@@ -17,7 +17,7 @@ public class Vehicles {
         return vehicleNumber;
     }
 
-    public void setType(VehicleType type) {
-        this.vehicletype = type;
+    public VehicleType getVehicletype() {
+        return vehicletype;
     }
 }

@@ -1,0 +1,37 @@
+V2 requirements
+
+1. Multiple vehicle categories
+Support:
+TWO_WHEELER
+FOUR_WHEELER
+HEAVY_VEHICLE
+EV_FOUR_WHEELER
+
+New rule:
+A normal four-wheeler spot can park only FOUR_WHEELER.
+An EV spot can park both FOUR_WHEELER and EV_FOUR_WHEELER.
+A heavy spot can park HEAVY_VEHICLE.
+
+2. Different spot types, not just vehicle types
+
+3. Spot should store parked vehicle
+
+4. Ticket should have real lifecycle and timestamps
+
+5.Dynamic pricing
+Bike: ₹10/hour
+Car: ₹20/hour
+Truck: ₹50/hour
+EV car: ₹30/hour
+Minimum one hour charge
+Weekend charges are double.
+
+
+Whats added in V2?
+1.Added different strategies for each vehicle type and different for weekends, handling all parking strategies in one place
+Intution---> Strategy patterns deals with Same goal different behaivour and here payment is one goal but pricing is just different for different vehicle
+
+2.Not added different ParkingSpots but made sure the previous version can accomodate vehicle specific request
+
+3.Each parking spot is storing vehicle
+4.Ticket now store complete session

@@ -1,0 +1,19 @@
+package Questions.ParkingLot.V2.PricingStrategy.Implementation;
+
+import Questions.ParkingLot.V2.PricingStrategy.PricingStrategy;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
+
+public class FourWheelerPricingStrategy implements PricingStrategy {
+    @Override
+    public double CalculatePrice(LocalDateTime parkingtime) {
+        LocalDateTime entryTime = parkingtime;
+        LocalDateTime exitTime = LocalDateTime.now();
+
+        Duration duration = Duration.between(entryTime, exitTime);
+        long chargedHours = Math.max(1, (duration.toMinutes() + 59) / 60);
+        double fee = chargedHours * 20.0;
+        return fee;
+    }
+}

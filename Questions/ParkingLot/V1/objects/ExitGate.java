@@ -1,5 +1,7 @@
 package Questions.ParkingLot.V1.objects;
 
+import java.time.LocalDateTime;
+
 public class ExitGate {
     Ticket ticket;
     ParkingSpotManager parkingSpotManager;
@@ -14,11 +16,17 @@ public class ExitGate {
     }
 
     public void MakePayment(){
-        System.out.println(10* ticket.getTime());
+        System.out.println(ticket.getTime());
     }
 
     public void GenerateReceipt(){
         System.out.println("payment done ");
+    }
+
+    public void ExitVehicle(Vehicles vehicle){
+        MakePayment();
+        RemoveVehicle();
+        GenerateReceipt();
     }
 
 }

@@ -17,6 +17,8 @@ import Questions.ParkingLot.V1.objects.Ticket;
 import Questions.ParkingLot.V1.objects.Vehicles;
 import Questions.ParkingLot.V1.objects.ParkingSpotManager;
 import Questions.ParkingLot.V1.objects.Vehicles;
+import Questions.ParkingLot.V2.Objects.Vehicle;
+import Questions.ParkingLot.V2.enums.VehicleTypes;
 import Questions.TicTacToe.Service.GamerRunner;
 import StrategyPattern.Eg2.WithPattern.PaymentService;
 import StrategyPattern.Eg2.WithPattern.Strategy.CashStrategy;
@@ -66,28 +68,28 @@ public class Main {
 
         //Parking spot
 
-        Vehicles car1 = new Vehicles("KA01AB1234",VehicleType.FOUR_WHEELER);
-        ParkingSpotManager parkingSpotManager=new ParkingSpotManager();
-        EntryGate entryGate=new EntryGate(parkingSpotManager);
-        Ticket ticket=entryGate.GenerateTicket(car1.getVehicleNumber(),VehicleType.FOUR_WHEELER);
+//        Vehicles car1 = new Vehicles("KA01AB1234",VehicleType.FOUR_WHEELER);
+//        ParkingSpotManager parkingSpotManager=new ParkingSpotManager();
+//        EntryGate entryGate=new EntryGate(parkingSpotManager);
+//        Ticket ticket=entryGate.GenerateTicket(car1);
+//
+//        ExitGate exit=new ExitGate(ticket,parkingSpotManager);
+//;
+//
+//        if (ticket == null) {
+//            System.out.println("Parking failed");
+//            return;
+//        }
+//
+//
+//        System.out.println("Vehicle parked");
+//        System.out.println("Ticket id: " + ticket.getVehicleNumber());
+//        System.out.println("Vehicle number: " + ticket.getVehicleNumber());
+//        System.out.println("Spot id: " + ticket.getSpot());
+//        System.out.println("Vehicle exited successfully");
+//
+//        exit.ExitVehicle(car1);
 
-        ExitGate exit=new ExitGate(ticket,parkingSpotManager);
-;
-
-        if (ticket == null) {
-            System.out.println("Parking failed");
-            return;
-        }
-
-
-        System.out.println("Vehicle parked");
-        System.out.println("Ticket id: " + ticket.getVehicleNumber());
-        System.out.println("Vehicle number: " + ticket.getVehicleNumber());
-        System.out.println("Spot id: " + ticket.getSpot());
-        System.out.println("Vehicle exited successfully");
-
-        exit.RemoveVehicle();
-        exit.MakePayment();
-        exit.GenerateReceipt();
+        Vehicle car1=new Vehicle("KA123b12", VehicleTypes.FOUR_WHEELER);
     }
 }

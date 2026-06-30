@@ -2,11 +2,13 @@ package Questions.ParkingLot.V1.objects;
 
 import Questions.ParkingLot.V1.enums.VehicleType;
 
+import java.time.LocalDateTime;
+
 public class Ticket {
     int id;
     VehicleType vehicleType;
     String vehicleNumber;
-    int time;
+    LocalDateTime time;
     int spot;
 
     public VehicleType getVehicleType() {
@@ -17,11 +19,11 @@ public class Ticket {
         this.vehicleType = vehicleType;
     }
 
-    public int getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 

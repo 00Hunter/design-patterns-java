@@ -1,0 +1,14 @@
+This is just a brute force low level design, it was pure intutive and nothing else. Simple basic working happy flow with simple given requirments nothing else.
+
+Happy flow
+
+Car-->Entry-->ParkingSpot-->Exit
+
+Vehicle enters
+→ find compatible free spot
+→ park vehicle in spot
+→ generate ticket with entry time
+→ vehicle exits with ticket
+→ calculate fee
+→ free spot
+→ close ticket

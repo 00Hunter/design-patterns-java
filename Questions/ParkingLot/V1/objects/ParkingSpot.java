@@ -3,6 +3,7 @@ package Questions.ParkingLot.V1.objects;
 import Questions.ParkingLot.V1.enums.VehicleType;
 
 public class ParkingSpot {
+    String vehicleNumber;
     VehicleType vehicleType;
     boolean isOccuipied;
 
