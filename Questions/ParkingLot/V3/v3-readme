@@ -1,0 +1,7 @@
+Parking Lot V3 goal
+New requirements
+1.Parking lot has multiple floors.
+2.Each floor has different spot types.
+3.Allocate the nearest compatible available spot from the entry gate.
+4.Ticket should show floor + spot.
+5.Keep your V2 pricing flow unchanged.

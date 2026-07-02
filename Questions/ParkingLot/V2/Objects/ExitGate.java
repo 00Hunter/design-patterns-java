@@ -5,7 +5,6 @@ import Questions.ParkingLot.V2.PricingStrategy.PricingStrategy;
 import java.time.LocalDateTime;
 
 public class ExitGate {
-    Ticket ticket;
     PricingService pricingService;
     ParkingSpotManager psm;
 
