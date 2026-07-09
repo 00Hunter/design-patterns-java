@@ -1,39 +1,33 @@
 package Questions.ParkingLot.V3.Objects;
 
+import Questions.ParkingLot.V3.ParkingStrategy.ParkingStrategy;
 import Questions.ParkingLot.V3.enums.VehicleTypes;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingSpotManager {
+public class ParkingLotManager {
     List<ParkingFloor>parkingFloors;
+    ParkingStrategy parkingStrategy;
     int TotalSpots;
 
-    public ParkingSpotManager(int totalfloors,int two_wheelerspots,int four_wheelerspots,int heavy_spot,int ev_spots){
+    public ParkingLotManager(ParkingStrategy ps,int totalfloors, int two_wheelerspots, int four_wheelerspots, int heavy_spot, int ev_spots){
         parkingFloors=new ArrayList<>();
+        this.parkingStrategy=ps;
 
         for(int i=0;i<totalfloors;i++){
             parkingFloors.add(new ParkingFloor(two_wheelerspots,four_wheelerspots,heavy_spot,ev_spots));
         }
     }
 
-    public int[] FindParkingSpot(Vehicle vehicle){
-        int parked=-1;
-        int floor=-1;
-        for(int i=0;i<parkingFloors.size();i++){
-            ParkingFloor pf=parkingFloors.get(i);
-             parked=pf.findParkingSpot(vehicle);
-             floor=i;
-             if(parked!=-1){
-                 break;
-             }
-        }
-        if(parked==-1){
-            int [] ans={-1,-1};
-            return ans;
-        }
-        int []ans={parked,floor};
-        return ans;
+    public SpotAllocation FindParkingSpot(Vehicle vehicle){
+        SpotAllocation newspot=parkingStrategy.AllocateSpot(parkingFloors,vehicle);
+        return newspot;
+    }
+
+    public ParkingSpot getParkingSpot(int floor,int spotId){
+        ParkingFloor pf=parkingFloors.get(floor);
+        return pf.getSpots().get(spotId);
     }
 
     public boolean AddParkingSpot(int floor,VehicleTypes types,int count){
@@ -47,6 +41,5 @@ public class ParkingSpotManager {
         return true;
     }
 
-    public void RemoveVehicle(int spot){
-            }
+    public void RemoveVehicle(int spotid,int floor){}
 }

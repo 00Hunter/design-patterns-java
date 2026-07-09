@@ -1,10 +1,9 @@
-package Questions.ParkingLot.V3.Objects;
+package Questions.ParkingLot.V4.Objects;
 
-import Questions.ParkingLot.V3.enums.VehicleTypes;
+import Questions.ParkingLot.V4.enums.VehicleTypes;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ParkingFloor {
     int id;
@@ -30,7 +29,7 @@ public class ParkingFloor {
         spotstillnow+=fourWheelerSpots;
 
         for(int i=0;i<heavy_vehiclespot;i++){
-            spots.add(new ParkingSpot(i+spotstillnow, Questions.ParkingLot.V3.enums.VehicleTypes.HEAVY_VEHICLE));
+            spots.add(new ParkingSpot(i+spotstillnow, VehicleTypes.HEAVY_VEHICLE));
         }
         spotstillnow+=heavy_vehiclespot;
 

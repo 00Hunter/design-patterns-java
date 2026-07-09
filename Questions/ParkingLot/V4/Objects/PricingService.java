@@ -1,11 +1,11 @@
-package Questions.ParkingLot.V3.Objects;
+package Questions.ParkingLot.V4.Objects;
 
-import Questions.ParkingLot.V2.PricingStrategy.Implementation.BikePricingStrategy;
-import Questions.ParkingLot.V2.PricingStrategy.Implementation.EV_Four_Wheeler;
-import Questions.ParkingLot.V2.PricingStrategy.Implementation.FourWheelerPricingStrategy;
-import Questions.ParkingLot.V2.PricingStrategy.Implementation.Heavy_Vehicle;
-import Questions.ParkingLot.V2.PricingStrategy.PricingStrategy;
-import Questions.ParkingLot.V3.enums.VehicleTypes;
+import Questions.ParkingLot.V4.PricingStrategy.Implementation.BikePricingStrategy;
+import Questions.ParkingLot.V4.PricingStrategy.Implementation.EV_Four_Wheeler;
+import Questions.ParkingLot.V4.PricingStrategy.Implementation.FourWheelerPricingStrategy;
+import Questions.ParkingLot.V4.PricingStrategy.Implementation.Heavy_Vehicle;
+import Questions.ParkingLot.V4.PricingStrategy.PricingStrategy;
+import Questions.ParkingLot.V4.enums.VehicleTypes;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;

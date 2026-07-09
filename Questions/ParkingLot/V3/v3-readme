@@ -5,3 +5,6 @@ New requirements
 3.Allocate the nearest compatible available spot from the entry gate.
 4.Ticket should show floor + spot.
 5.Keep your V2 pricing flow unchanged.
+
+
+A good SDE-2 move is: when primitive data starts carrying meaning, create a meaningful object.

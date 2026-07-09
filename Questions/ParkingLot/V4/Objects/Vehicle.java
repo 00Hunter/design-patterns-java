@@ -1,6 +1,6 @@
-package Questions.ParkingLot.V3.Objects;
+package Questions.ParkingLot.V4.Objects;
 
-import Questions.ParkingLot.V3.enums.VehicleTypes;
+import Questions.ParkingLot.V4.enums.VehicleTypes;
 
 public class Vehicle {
     String number;

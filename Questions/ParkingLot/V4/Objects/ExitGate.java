@@ -1,12 +1,13 @@
-package Questions.ParkingLot.V3.Objects;
+package Questions.ParkingLot.V4.Objects;
 
-import Questions.ParkingLot.V2.enums.Status;
+import Questions.ParkingLot.V4.enums.Status;
 
 import java.time.LocalDateTime;
 
 public class ExitGate {
     PricingService pricingService;
     ParkingLotManager psm;
+    PaymentService paymentService;
 
 
     public ExitGate(PricingService pricingService, ParkingLotManager psm){
@@ -16,6 +17,8 @@ public class ExitGate {
 
     public boolean ProcessPayment(Ticket ticket){
         double priceTopay=pricingService.calculateFee(ticket, LocalDateTime.now());
+
+        paymentService.processPayment()
         psm.RemoveVehicle(ticket.getParkspotId(),ticket.getFloor());
         System.out.println("Your Total is:"+priceTopay);
         GenerateRecipt(priceTopay);
