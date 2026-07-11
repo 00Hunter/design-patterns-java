@@ -4,7 +4,7 @@ import Questions.ParkingLot.V4.PaymentStrategy.PaymentStrategy;
 
 public class UPIPaymentStrategy implements PaymentStrategy {
     @Override
-    public boolean pay(int amount) {
-        return false;
+    public boolean pay(double amount) {
+        return true;
     }
 }

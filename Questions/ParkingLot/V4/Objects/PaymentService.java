@@ -1,15 +1,39 @@
 package Questions.ParkingLot.V4.Objects;
 
+import Questions.ParkingLot.V4.PaymentStrategy.Implementation.CardPaymentStrategy;
+import Questions.ParkingLot.V4.PaymentStrategy.Implementation.CashPaymentStrategy;
+import Questions.ParkingLot.V4.PaymentStrategy.Implementation.UPIPaymentStrategy;
 import Questions.ParkingLot.V4.PaymentStrategy.PaymentStrategy;
 
-public class PaymentService {
-    PaymentStrategy paymentStrategy;
+import java.util.HashMap;
+import java.util.Map;
 
-    public PaymentService(PaymentStrategy ps){
-        this.paymentStrategy=ps;
+public class PaymentService {
+    Map<String,PaymentStrategy>paymentStrategyMap;
+
+    public PaymentService(){
+        paymentStrategyMap=new HashMap<>();
+        paymentStrategyMap.put("UPI",new UPIPaymentStrategy());
+        paymentStrategyMap.put("CARD",new CardPaymentStrategy());
+        paymentStrategyMap.put("CASH",new CashPaymentStrategy());
     }
 
-    boolean processPayment(int amount){
-        return paymentStrategy.pay(amount);
+    boolean processPayment(String mode,double amount) {
+        PaymentStrategy ps = paymentStrategyMap.get(mode.toUpperCase());
+
+        if (ps == null) {
+            System.out.println("Invalid payment mode");
+            return false;
+        }
+
+        boolean success = ps.pay(amount);
+
+        if (!success) {
+            System.out.println("Payment failed");
+            return false;
+        }
+
+        System.out.println("Payment of amount " + amount + " is successful");
+        return true;
     }
 }

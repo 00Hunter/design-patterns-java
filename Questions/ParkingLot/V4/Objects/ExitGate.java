@@ -13,17 +13,25 @@ public class ExitGate {
     public ExitGate(PricingService pricingService, ParkingLotManager psm){
         this.pricingService=pricingService;
         this.psm=psm;
+        this.paymentService=new PaymentService();
     }
 
-    public boolean ProcessPayment(Ticket ticket){
+    public boolean ProcessPayment(String mode,Ticket ticket){
         double priceTopay=pricingService.calculateFee(ticket, LocalDateTime.now());
 
-        paymentService.processPayment()
-        psm.RemoveVehicle(ticket.getParkspotId(),ticket.getFloor());
+
         System.out.println("Your Total is:"+priceTopay);
-        GenerateRecipt(priceTopay);
-        ticket.setStatus(Status.CLOSED);
-        return true;
+       boolean isPaymentDone= paymentService.processPayment(mode,priceTopay);
+
+       if(isPaymentDone){
+           psm.RemoveVehicle(ticket.getFloor(), ticket.getParkspotId());
+           GenerateRecipt(priceTopay);
+           ticket.setStatus(Status.CLOSED);
+           return true;
+       }
+
+       return false;
+
     }
     void GenerateRecipt(double priceTopay){
         System.out.println("Amount paid"+priceTopay);
