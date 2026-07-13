@@ -1,0 +1,11 @@
+New requirement
+Parking lot has multiple entry gates and multiple exit gates.
+
+Vehicles can enter from different gates at the same time.
+Vehicles can exit from different gates at the same time.
+
+System should prevent:
+1. Two entry gates assigning the same spot
+2. Two exit gates closing the same ticket twice
+3. Payment success but spot not freed
+4. Payment failure but spot freed

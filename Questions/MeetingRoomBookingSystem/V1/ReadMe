@@ -1,0 +1,25 @@
+LLD Interview Question: Design a Meeting Room Booking System
+
+Design an in-memory meeting room booking system for an office.
+
+Requirements
+The office has multiple meeting rooms with different capacities.
+A user can search for available rooms for a given time range and required capacity.
+A user can book an available room.
+A booking must contain:
+Meeting title
+Organizer
+Participants
+Start time
+End time
+Meeting room
+Two meetings cannot use the same room during overlapping time periods.
+A user can cancel a booking.
+A user can reschedule an existing booking.
+Users should be able to view:
+Their bookings
+A room’s schedule for a particular day
+Assume everything is stored in memory.
+
+Write executable code with a small driver program demonstrating the main flows.
+
