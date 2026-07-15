@@ -9,3 +9,5 @@ System should prevent:
 2. Two exit gates closing the same ticket twice
 3. Payment success but spot not freed
 4. Payment failure but spot freed
+
+Will be adding concurrency handling 

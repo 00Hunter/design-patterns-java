@@ -13,9 +13,10 @@ design-patterns-java/
 ├── ObserverPattern/
 │   └── WeatherApp/
 ├── ChainOfResponsiblityPattern/
-├── Questions/
+├── Questions/ 
 │   ├── ParkingSpot/
 │   ├── TicTacToe/
+│   ├── MeetingRoomBooking/
 │   └── SnakeAndLadder/
 └── Main.java
 ```
