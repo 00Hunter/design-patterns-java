@@ -10,4 +10,4 @@ System should prevent:
 3. Payment success but spot not freed
 4. Payment failure but spot freed
 
-Will be adding concurrency handling 
+also added payment strategy
